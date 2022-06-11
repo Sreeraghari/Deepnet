@@ -1,0 +1,28 @@
+h3 {
+    margin-top: 20px;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 3px;
+
+}
+
+input {
+    margin-top: 20px;
+    margin-left: 4px;
+}
+
+.box {
+    margin-top: 200px;
+    margin-left: 500px;
+    width: 350px;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    margin-top: 20px;
+    margin-bottom: 8px;
+cursor: pointer;
+}
