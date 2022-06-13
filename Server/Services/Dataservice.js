@@ -22,8 +22,7 @@ const register = (name, email,password,place) => {
           return {
             statuscode: 200,
             status: true,
-            message: "Registered successfully"
-  
+            message: "Registered successfully" 
           }
         }
       })
@@ -37,15 +36,10 @@ const register = (name, email,password,place) => {
     return db.Data.findOne({ email, password })
       .then(data => {
         if (data) {
-          currentemail = email
-          currentpassword = data.password
-  
           return {
             statuscode: 200,
             status: true,
             message: "successfully Login",
-            currentemail,
-            currentpassword
           }
   
         }
@@ -53,7 +47,7 @@ const register = (name, email,password,place) => {
           return {
             statuscode: 422,
             status: false,
-            message: "incorrect passwordt /Account Number"
+            message: "incorrect password"
   
           }
         }

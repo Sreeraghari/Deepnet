@@ -4,9 +4,7 @@ const cors=require('cors')
 
 const app=express()
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}))
+app.use(cors())
 
 const dataservice=require('./Services/Dataservice')
 app.use(express.json())
@@ -29,9 +27,6 @@ app.post('/login', (req, res) => {
 })
 
 
-// app.listen(5000,()=>{
-//     console.log("Server started at port number 5000");
-// })
 app.listen(5000, ()=>{
         console.log("Server started at port number 5000");
 

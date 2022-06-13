@@ -1,53 +1,45 @@
 import React from 'react'
 import './Register.css'
-import { useState,useEffect } from 'react'
-import { Link, Navigate,useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import {  useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function Register() {
 
-    useEffect(() => {
 
-    const register=()=>{
-        axios.post("http://localhost:5000/register",{
-                    name:input.name,
-        email:input.email,
-        password:input.password,
-        place:input.place
-
-        }).then(res=>{
-            console.log(res);
-        })
-    }
-        
-
-
-    }, [])
-    
-
-    const[input,setInput]=useState({
-        name:"",
-        email:"",
-        password:"",
-        place:""
+    const [input, setInput] = useState({
+        name: "",
+        email: "",
+        password: "",
+        place: ""
     })
-const Nav=useNavigate()
-    const handlechange=(e)=>{
-        setInput((prevState)=>({
+    const Nav = useNavigate()
+    const handlechange = (e) => {
+        setInput((prevState) => ({
             ...prevState,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         }))
     }
-    const handleSubmit=(e)=>{
+
+    const register = async () => {
+        const res = await axios.post("http://localhost:5000/register", {
+            name: input.name,
+            email: input.email,
+            password: input.password,
+            place: input.place
+
+        }).catch(err => console.log(err))
+        const data = await res.data
+        return data
+    }
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(input);
-        Nav('/login')
-        
+        register().then(() => Nav('/login'))
     }
     return (
         <div  >
 
-            
+
 
             <form onSubmit={handleSubmit} >
                 <div className='box'>
@@ -59,9 +51,9 @@ const Nav=useNavigate()
 
                     <label>Email</label>
 
-                    <input type="email" value={input.email}name="email" onChange={handlechange} ></input><br /> 
+                    <input type="email" value={input.email} name="email" onChange={handlechange} ></input><br />
 
-                    <label>Pswd</label> 
+                    <label>Pswd</label>
 
                     <input type="password" value={input.password} name="password" onChange={handlechange}></input><br />
 
@@ -69,7 +61,7 @@ const Nav=useNavigate()
 
                     <input type="text" value={input.place} name="place" onChange={handlechange}></input><br />
 
-                  <button type='submit' >Submit</button>
+                    <button type='submit' >Submit</button>
 
                 </div>
             </form>

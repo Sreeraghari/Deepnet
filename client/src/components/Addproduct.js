@@ -7,7 +7,6 @@ function Addproduct() {
             <form  >
                 <div className='box'>
                     <h3>Add product</h3>
-
                     <label>Name</label>
                     <input type="text"  ></input> <br />
                     <label>type</label>
@@ -16,11 +15,8 @@ function Addproduct() {
                     <input type="text" ></input><br />
                     <label>category</label>
                     <input type="text" ></input><br />
-                    <button>Submit</button>
-
                 </div>
             </form>
-
         </div>
     )
 }
